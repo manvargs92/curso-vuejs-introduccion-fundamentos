@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app"></div>
+
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+            evt: "submit",
+          };
+        },
+
+        // methods, aquí se definen los metodos que se pueden invocar dentro de los componentes
+        methods: {
+          increment() {
+            console.log("CLICK");
+            this.counter++;
+          },
+          submit(e) {
+            console.log(e);
+            e.preventDefault();
+          },
+        },
+
+        template: `
+        <button v-on:click="increment()">{{ counter }}</button>
+        <button v-on:keydown="increment()">{{ counter }}</button>
+        <form v-on:submit="submit"><button>Enviar</button></form>
+        <form v-on:[evt]="submit"><button>Enviar</button></form>
+        `,
+        // v-on: escuchar eventos en el HTML
+      }).mount("#app");
+    </script>
+  </body>
+</html>
