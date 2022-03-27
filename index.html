@@ -16,15 +16,25 @@
         data() {
           return {
             text: "!!Hola VueJS!!",
-            text2: "<h1>Hola Vue</h1>"
+            text2: "<h1>Hola Vue</h1>",
+            attr: "src",
+            attr: "alt",
+            img: "https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ",
           };
         },
 
-        template: `<div v-once v-text="text"></div>
-        <div v-html="text2"></div>`,
+        template: `
+        <div v-once v-text="text"></div>
+        <div v-html="text2"></div>
+        <img v-bind:src="img" v-bind:alt="img">
+        <img v-bind:["src"]="img">
+        <img v-bind:[attr]="img">
+        <img v-bind:[attr2]="img">
+        `,
         // v-text="" interpolar datos en vez de usar {{}}
         // v-once interpolar datos que no van a cambiar
         // v-html interpolar texto que contiene etiquetas HTML
+        // v-bind: enlaza el atributo html a vue y lo vuelve reactivo
       }).mount("#app");
     </script>
   </body>
