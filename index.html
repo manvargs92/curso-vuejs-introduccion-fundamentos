@@ -9,15 +9,22 @@
   <body>
     <script src="https://unpkg.com/vue@3"></script>
 
-    <div id="app">{{ text }}</div>
+    <div id="app"></div>
 
     <script>
       const vm = Vue.createApp({
         data() {
           return {
             text: "!!Hola VueJS!!",
+            text2: "<h1>Hola Vue</h1>"
           };
         },
+
+        template: `<div v-once v-text="text"></div>
+        <div v-html="text2"></div>`,
+        // v-text="" interpolar datos en vez de usar {{}}
+        // v-once interpolar datos que no van a cambiar
+        // v-html interpolar texto que contiene etiquetas HTML
       }).mount("#app");
     </script>
   </body>
