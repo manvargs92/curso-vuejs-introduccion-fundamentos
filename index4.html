@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app"></div>
+
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            text: "Hola VueJS",
+          };
+        },
+
+        methods: {
+          input(e) {
+            console.log(e.target.value);
+            this.text = e.target.value;
+          },
+        },
+
+        template: `
+        <p> {{ text }} </p>
+        <p>Input con v-on y v-bind:
+            <input type="text" @input="input" :value="text" />
+        </p>
+        <p>Input con v-model:
+            <input type="text" v-model="text" />
+        </p>
+        `,
+        // v-bind    shorthand-->   :
+        // v-on      shorthand-->   @
+        // v-model="" directiva bidireccional para interpolar datos
+      }).mount("#app");
+    </script>
+  </body>
+</html>
